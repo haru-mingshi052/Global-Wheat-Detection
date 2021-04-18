@@ -3,6 +3,10 @@ import time
 import torch
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
+"""
+モデルを学習させる関数
+"""
+
 def train_model(model, tr_dl, val_dl, num_epochs, output_folder):
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     print('使用デバイス：', device)

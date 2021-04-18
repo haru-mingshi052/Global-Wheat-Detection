@@ -1,6 +1,10 @@
 import torchvision
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 
+"""
+モデルの定義
+"""
+
 def Model():
     model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained = True)
 

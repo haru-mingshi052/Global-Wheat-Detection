@@ -7,6 +7,13 @@ from torch.utils.data import Dataset, DataLoader
 from .preprocessing import create_data
 from .transformer import *
 
+"""
+DataLoaderの作成
+"""
+
+#==============================
+# GWDDataset
+#==============================
 class GWDDataset(Dataset):
     def __init__(self, df, image_dir, transforms):
         super().__init__()
@@ -57,6 +64,9 @@ class GWDDataset(Dataset):
     def __len__(self):
         return self.image_ids.shape[0]
 
+#=================================
+# GWS_testDataset
+#=================================
 class GWD_testDataset(Dataset):
     def __init__(self, df, image_dir, transforms):
         super().__init__()
@@ -87,9 +97,15 @@ class GWD_testDataset(Dataset):
     def __len__(self):
         return self.image_ids.shape[0]
 
+#=========================
+# collate_fn
+#=========================
 def collate_fn(batch):
     return tuple(zip(*batch))
 
+#=======================================
+# create_dataloader
+#=======================================
 def create_dataloader(data_folder):
     train, val, test = create_data(data_folder)
     

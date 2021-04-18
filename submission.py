@@ -12,6 +12,10 @@ from train import train_model
 
 import argparse
 
+"""
+submissionファイルを作成する
+"""
+
 parser = argparse.ArgumentParser(
     description = "parameter for training"
 )
@@ -25,12 +29,17 @@ parser.add_argument('--epochs', default = 15, type = int,
 
 args = parser.parse_args()
 
+#================================
+# submission
+#================================
 def submission(model, test_dl):
     results, images, outputs = prediction(model, test_dl)
     sub = pd.DataFrame(results, columns = ['image_id', 'PredictionString'])
     sub.to_csv(args.output_folder + '/submission.csv', index = False)
 
-
+#================================
+# format_prediction_string
+#================================
 def format_prediction_string(boxes, scores):
     pred_strings = []
     for j in zip(scores, boxes):
@@ -38,6 +47,9 @@ def format_prediction_string(boxes, scores):
         
     return " ".join(pred_strings)
 
+#================================
+# prediction
+#================================
 def prediction(model, dl):
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     

@@ -2,6 +2,10 @@ import random
 import numpy as np
 import torch
 
+"""
+乱数を固定
+"""
+
 def seed_everything(seed):
     random.seed(seed)
     np.random.seed(seed)

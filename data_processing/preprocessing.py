@@ -2,12 +2,22 @@ import pandas as pd
 import numpy as np
 import re
 
+"""
+データを準備する関数
+"""
+
+#===========================
+# read_data
+#===========================
 def read_data(data_folder):
     train = pd.read_csv(data_folder + '/train.csv')
     test = pd.read_csv(data_folder + '/sample_submission.csv')
 
     return train, test
 
+#==========================
+# split
+#==========================
 def split(df):
     image_ids = df['image_id'].unique()
     val_ids = image_ids[-665:]
@@ -17,12 +27,18 @@ def split(df):
 
     return train, val
 
+#==========================
+# expand_bbox
+#==========================
 def expand_bbox(x):
     r = np.array(re.findall("([0-9]+[.]?[0-9]*)", x))
     if len(r) == 0:
         r = [-1, -1, -1, -1]
     return r
 
+#=================================
+# create_data
+#=================================
 def create_data(data_folder):
     train, test = read_data(data_folder)
 
