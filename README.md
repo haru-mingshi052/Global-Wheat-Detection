@@ -5,10 +5,10 @@ kaggleで開催されていたコンペGlobal Wheat Detectionのノートです
 # 必要なライブラリ  
 ・numpy  
 ・pandas  
-・random
-・OpenCV
-・torch
-・torchvision
+・random  
+・OpenCV  
+・torch  
+・torchvision  
 ・albumentations  
   
 # 参考文献  
